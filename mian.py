@@ -71,20 +71,51 @@ name_of_parent.send_keys(random_name(parent_names))
 name_of_student = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')  # Replace with the actual XPath
 name_of_student.send_keys(random_name(student_names))
 
+
+
 # Fill in CLASS (Dropdown - Random Class from I to XII)
 class_dropdown = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div[1]/div[1]/span')  # Replace with the actual XPath
 class_dropdown.click()  # Click to open dropdown
 
+
+
 # Wait for the dropdown options to appear and select one
 time.sleep(1)
-class_options = driver.find_elements(By.XPATH, "//div[@role='listitem']")
-random_class = random.choice(class_options)
-random_class.click()  # Click on a random class option
 
-# Fill in SECTION (Dropdown - Random Section)
-section_dropdown = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div[1]/div[1]/div[1]/span')  # Replace with the actual XPath
-section_dropdown.click()  # Click to open dropdown
+class_options = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div[1]/div[1]/span')
+class_list = [str(i) for i in range(4, 13)]  # List of classes from 4 to 12
+random_class = random.choice(class_list)
 
+class_options.click()
+if random_class == '6':
+    choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div[9]/span')
+    choice.click()
+elif random_class == '7':
+    choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div[10]/span')
+    choice.click()
+elif random_class == '8':
+    choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div[11]/span')
+    choice.click()
+elif random_class == '9':
+    choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div[12]/span')
+    choice.click()
+elif random_class == '10':
+    choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div[13]/span')
+    choice.click()
+elif random_class == '11':
+    choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div[14]/span')
+    choice.click()
+elif random_class == '12':
+    choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[2]/div[15]/span')
+    choice.click()
+
+time.sleep(1)
+
+sec_options = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div[1]/div[1]/span')
+sec_options.click()
+choice = driver.find_elements(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div[2]/div[3]/span')
+choice.click()
+    
 # Wait for the dropdown options to appear and select one
 time.sleep(1)
 if random_class.text in ['XI', 'XII']:
@@ -111,9 +142,9 @@ q8 = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[8]/d
 q8.send_keys(random_choice(q8_responses))
 
 # Submit the form
-#submit_button = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span')  # Replace with the actual XPath
-#submit_button.click()
+submit_button = driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span')  # Replace with the actual XPath
+submit_button.click()
 
 # Wait for the form to be submitted and close the browser
-#time.sleep(2)
-#driver.quit()
+time.sleep(2)
+driver.quit()
